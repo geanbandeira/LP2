@@ -1,0 +1,9 @@
+Arquitetura de plataforma
+limguagem baixo nivel assmbly
+alto nivel java a linguagem que utilizamos 
+memoria stack armazena valores primitivos
+stack uma pilha, empilhada, empilha valores
+memoria heap, sao armazenadoos todos objetos do programa, espaço maior xmx define tamanho
+garbage collector varre periodicamente a memoria heap
+ferramenta visuakVM
+metodo equals compara se dois obj sao iguais retorna true
