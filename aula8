@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Áreas </title>
+</head>
+<body>
+
+	<div>
+		<h3> Calculo</h3>
+	<form action="verificaTipoForma.jsp">
+	
+	<p> Informe seu nome <input type="text" name="txNome" size="30"<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	
+	</form>
+	
+	</div>
+
+</body>
+</html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" import="java.util.Date,java.text.SimpleDateFormat"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Go | Page JSP</title>
+</head>
+<body>
+
+	<%! int contAcessos = 0;%>
+	
+	<%
+	out.println("<h3> Informações de Data e Hora: </h3>");
+	Date DataAtual = new Date();
+	String data = new SimpleDateFormat("dd/MM/yyyy").format(DataAtual);
+	String hora = new SimpleDateFormat("hh:mm").format(DataAtual);
+	contAcessos++;
+	%>
+	<h4> Data Atual: <%=data %> </h4>
+	<h4> Hora Atual: <%=hora %> </h4>
+	<h4>  Número de Acessos: <%= contAcessos%></h4>
+	
+	<form>
+		<p> Nome <input type="text" name="nome" size="30"></p>
+		<p> E-mail <input type="text" name="email" size="30"></p>
+		<p> Telefone <input type="text" name="telefone" size="11"></p>
+		<p> <input type="submit" value="Enviar" name="enviar"></p>
+	</form>
+	
+	<form action="recebeDados.jsp">
+		<p> Nome <input type="text" name="nome" size="30"></p>
+		<p> E-mail <input type="text" name="email" size="30"></p>
+		<p> Telefone <input type="text" name="telefone" size="11"></p>
+		<p> <input type="submit" value="Enviar" name="enviar"></p>
+	</form>
+	
+	<form method="POST" action="recebeDados.jsp">
+		<p> Nome <input type="text" name="nome" size="30"></p>
+		<p> E-mail <input type="text" name="email" size="30"></p>
+		<p> Telefone <input type="text" name="telefone" size="11"></p>
+		<p> <input type="submit" value="Enviar" name="enviar"></p>
+	</form>
+	
+	<%String nome, email, telefone;
+	nome = request.getParameter(nome);
+	email = request.getParameter(email);
+	telefone = request.getParameter(telefone);
+	%>
+	<h4>Nome: <%=nome%> </h4>
+	<h4>E-mail: <%=email%> </h4>
+	<h4>Telefone: <%=telefone%> </h4>
+	
+</body>
+</html>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Calcula</title>
+</head>
+<body>
+
+	<%! double base = 0, altura = 0, area = 0; %>
+	
+
+</body>
+</html>
