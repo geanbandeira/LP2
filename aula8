@@ -78,18 +78,92 @@
 </body>
 </html>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Calcula</title>
+    <title>Cálculo de Áreas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
-	<%! double base = 0, altura = 0, area = 0; %>
-	
-
+    <div>
+        <h3>Cálculo de Áreas de Formas Geométricas</h3>
+        <form action="verificaTipoForma.jsp">
+            <p>Informe seu nome <input type="text" name="txNome" size="30"></p>
+            <p><b>Tipos de Formas Geométricas:</b></p>
+            <p>
+                <input type="radio" name="rbForma" value="retangulo" checked> Retângulo<br>
+                <input type="radio" name="rbForma" value="circulo"> Círculo
+            </p>
+            <p><input type="submit" name="btProximo" value="Próximo"></p>
+        </form>
+    </div>
 </body>
 </html>
+
+<%
+    if (request.getParameter("rbForma").equals("retangulo")) {
+        out.println("<form action='calculaAreaRetangulo.jsp'>");
+        out.println("<h3>Cálculo da área do retângulo</h3>");
+        out.println("<p>Base do retângulo <input type='text' name='txBase' size='10'></p>");
+        out.println("<p>Altura do retângulo <input type='text' name='txAltura' size='10'></p>");
+    } else if (request.getParameter("rbForma").equals("circulo")) {
+        out.println("<form action='calculaAreaCirculo.jsp'>");
+        out.println("<h3>Cálculo da área do círculo</h3>");
+        out.println("<p>Raio do círculo <input type='text' name='txRaio' size='10'></p>");
+    }
+
+    if (!(request.getParameter("txNome").equals(""))) {
+        out.println("<input type='hidden' name='hdNome' value='" + request.getParameter("txNome") + "'>");
+    } else {
+        out.println("<input type='hidden' name='hdNome' value='Usuário anônimo'>");
+    }
+
+    out.println("<input type='submit' name='btCalcular' value='Calcular'>");
+    out.println("</form>"); // Fecha o formulário.
+%>
+
+<%!
+    double base = 0, altura = 0, area = 0;
+%>
+<%
+    if (!(request.getParameter("txBase").equals("")) && !(request.getParameter("txAltura").equals(""))) {
+        base = Double.parseDouble(request.getParameter("txBase"));
+        altura = Double.parseDouble(request.getParameter("txAltura"));
+        area = base * altura;
+
+        out.println("<h4>" + request.getParameter("hdNome") + ", a área do retângulo é: " + area + "</h4>");
+    } else {
+        out.println("Preencha todos os campos!");
+    }
+%>
+
+<%!
+    double raio = 0, area = 0;
+%>
+<%
+    if (!(request.getParameter("txRaio").equals(""))) {
+        raio = Double.parseDouble(request.getParameter("txRaio"));
+        area = Math.pow(raio, 2) * Math.PI;
+
+        out.println("<h4>" + request.getParameter("hdNome") + ", a área do círculo é: " + area + "</h4>");
+    } else {
+        out.println("Preencha todos os campos!");
+    }
+%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
